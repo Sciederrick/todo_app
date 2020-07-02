@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="bg-white font-mono">
-    <app-header  v-if="anyTask"/>
+    <app-header v-if="anyTask"/>
       <router-view></router-view>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      availableTasks: true
+
     }
   },
   computed: mapGetters(['anyTask'])
