@@ -1,14 +1,15 @@
 <template>
   <div>
-    <myTodos v-if="availableTasks"/>
-    <div v-if="!availableTasks" id="blank" class="flex flex-col items-center space-y-64">
-      <h1 class="page-title">Hey Tasker!</h1>
-      <a href="#/add" role="button" class="btn btn-blank-task">Task</a>
+    <myTodos v-if="anyTask"/>
+    <div v-if="!anyTask" id="blank" class="flex flex-col items-center space-y-64">
+      <h1 class="page-title">Lets give us some Tasks!</h1>
+      <a href="/add" role="button" class="btn btn-blank-task">Task</a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import myTodos from './myTodos';
 
 export default {
@@ -17,10 +18,10 @@ export default {
   },
   data(){
     return {
-      availableTasks: true
-    }
-  }
 
+    }
+  },
+  computed: mapGetters(['anyTask'])
 }
 </script>
 
