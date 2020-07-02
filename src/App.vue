@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="bg-white font-mono">
-    <app-header v-if="anyTask"/>
+  <div id="app" class="bg-white font-mono md:text-lg lg:text-xl">
+    <app-header/>
       <router-view></router-view>
   </div>
 </template>

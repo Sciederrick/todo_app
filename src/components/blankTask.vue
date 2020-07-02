@@ -1,7 +1,7 @@
 <template>
   <div>
-    <myTodos v-if="anyTask"/>
-    <div v-if="!anyTask" id="blank" class="flex flex-col items-center space-y-64">
+    <myTodos/>
+    <div v-if=false id="blank" class="flex flex-col items-center space-y-64">
       <h1 class="page-title">Lets give us some Tasks!</h1>
       <a href="/add" role="button" class="btn btn-blank-task">Task</a>
     </div>
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import myTodos from './myTodos';
 
 export default {
@@ -21,7 +20,6 @@ export default {
 
     }
   },
-  computed: mapGetters(['anyTask'])
 }
 </script>
 

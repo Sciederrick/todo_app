@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 ">
+  <div class="mt-2 py-2 mx-auto lg:w-4/5">
     <div class="mx-2 mb-6 flex flex-col flex-wrap justify-center items-stretch  flex-grow md:flex-row md:justify-start">
       <div v-for="todo in allTodos" :key="todo._id" class="relative p-2 border border-4 border-white bg-red-200 md:w-1/3 lg:w-1/4">
         {{todo.title}}
