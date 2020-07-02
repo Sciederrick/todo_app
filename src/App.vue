@@ -1,12 +1,16 @@
 <template>
-  <div id="app" class="mt-4 md:px-4">
+  <div id="app" class="bg-white font-mono">
+    <app-header/>
       <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+import header from './components/header.vue'
 export default {
+  components: {
+    'app-header': header
+  }
 
 }
 </script>
