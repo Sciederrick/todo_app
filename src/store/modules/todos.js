@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const state = {
-  todos: [],
-  availableTasks: true
+  todos: []
 };
 
 const getters = {
@@ -11,10 +10,9 @@ const getters = {
 };
 
 const actions = {
-  //asynchronous
   async fetchTodos({ commit }){
     const response = await axios.get('http://localhost:3000/todos');
-    (response.data.length !== 0)?commit('setTodos', response.data, true):commit('setTodos', response.data, false);
+    commit('setTodos', response.data);
   },
   async addTodo({ commit }, {title, datetime}){
     let response = await axios.post('http://localhost:3000/todos',
@@ -32,10 +30,7 @@ const actions = {
 };
 
 const mutations = {
-  setTodos: (state, todos, availableTasks) => {
-    state.todos = todos;
-    state.availableTasks = availableTasks;
-  },
+  setTodos: (state, todos, availableTasks) => state.todos = todos,
   newTodo: (state, todo) => state.todos.unshift(todo),
   removeTodo: (state, _id) => {
     state.todos = state.todos.filter(todo => todo._id !== _id)
