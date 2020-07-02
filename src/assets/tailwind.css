@@ -4,7 +4,7 @@
   @apply inline-block rounded-lg outline-none;
 }
 .btn-blank-task {
-  @apply py-2 px-4 text-pink-700 bg-white shadow-lg font-bold text-2xl;
+  @apply py-2 px-4 text-white bg-red-600 shadow-lg font-bold text-2xl;
 }
 .dec-inc-taskbox {
   @apply w-8 bg-transparent text-indigo-900 font-bold py-4;
@@ -13,6 +13,6 @@
    @apply border rounded-md my-2 w-3/4;
  }
 .page-title {
-  @apply text-pink-700 font-bold text-center text-2xl;
+  @apply text-blue-300 font-bold text-center text-xl;
 }
 @tailwind utilities;

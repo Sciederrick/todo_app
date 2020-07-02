@@ -1,0 +1,50 @@
+import axios from 'axios';
+
+const state = {
+  todos: [],
+  availableTasks: true
+};
+
+const getters = {
+  allTodos: state => state.todos,
+  anyTask: state => state.availableTasks
+};
+
+const actions = {
+  //asynchronous
+  async fetchTodos({ commit }){
+    const response = await axios.get('http://localhost:3000/todos');
+    (response.data.length !== 0)?commit('setTodos', response.data, true):commit('setTodos', response.data, false);
+  },
+  async addTodo({ commit }, {title, datetime}){
+    let response = await axios.post('http://localhost:3000/todos',
+    {
+     title,
+     datetime,
+     completed:false,
+    });
+    commit('newTodo', response.data);
+  },
+  async deleteTodo({ commit }, _id){
+    await axios.delete(`http://localhost:3000/todos/${_id}`);
+    commit('removeTodo', _id);
+  }
+};
+
+const mutations = {
+  setTodos: (state, todos, availableTasks) => {
+    state.todos = todos;
+    state.availableTasks = availableTasks;
+  },
+  newTodo: (state, todo) => state.todos.unshift(todo),
+  removeTodo: (state, _id) => {
+    state.todos = state.todos.filter(todo => todo._id !== _id)
+  },
+};
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations
+};
