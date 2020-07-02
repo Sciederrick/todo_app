@@ -5,8 +5,7 @@ const state = {
 };
 
 const getters = {
-  allTodos: state => state.todos,
-  anyTask: state => state.availableTasks
+  allTodos: state => state.todos
 };
 
 const actions = {
@@ -30,7 +29,7 @@ const actions = {
 };
 
 const mutations = {
-  setTodos: (state, todos, availableTasks) => state.todos = todos,
+  setTodos: (state, todos) => state.todos = todos,
   newTodo: (state, todo) => state.todos.unshift(todo),
   removeTodo: (state, _id) => {
     state.todos = state.todos.filter(todo => todo._id !== _id)
