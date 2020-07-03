@@ -6,18 +6,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import header from './components/header.vue'
+
 export default {
   components: {
     'app-header': header
-  },
-  data() {
-    return {
-
-    }
-  },
-  computed: mapGetters(['anyTask'])
+  }
 }
 </script>
 
