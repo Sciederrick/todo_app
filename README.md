@@ -1,4 +1,16 @@
-# todo_app
+### TODO APP
+
+![project snapshot](./Capture.PNG)
+
+** For Managing Tasks **
+
+* Vue
+
+* Tailwind
+
+* Node & Express
+
+* MongoDB & Mongoose
 
 ## Project setup
 ```
