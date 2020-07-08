@@ -4,6 +4,8 @@
 
 **For Managing Tasks**
 
+Language Stack:
+
 * Vue
 
 * Tailwind
