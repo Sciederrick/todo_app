@@ -2,7 +2,7 @@
 
 ![project snapshot](./Capture.PNG)
 
-** For Managing Tasks **
+**For Managing Tasks**
 
 * Vue
 
