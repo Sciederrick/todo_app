@@ -32,17 +32,17 @@ app.use(enableCORS);
 
 //fetching data
 app.get('/todos', (req, res) => {
-  console.log('fetch request..');
+  console.log('fetch request');
   /****************************************DB********************************************/
   mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   const db = mongoose.connection;
   db.on('error', console.error.bind(console, '[mongodb] connection error:'));
   db.once('open', ()=>{
     //We're connected
-    console.log('Status 200 => OK[mongoDB]...');
+    console.log('%cStatus 200 => OK[mongoDB]', 'color: white; background: green; font-weight: bold;');
     Todo.find({}, function (err, docs) {
       if(err) console.error.bind(console, err);
-    console.log('fetch successfull..');
+    console.log('fetch successfull');
       res.json(docs);
     });
   });
@@ -51,7 +51,7 @@ app.get('/todos', (req, res) => {
 
 //Adding data
 app.post('/todos', (req, res) => {
-  console.log('post request..');
+  console.log('post request');
   console.log(req.body);
   let {title, datetime, completed} = req.body;
   /****************************************DB********************************************/
@@ -60,7 +60,7 @@ app.post('/todos', (req, res) => {
   db.on('error', console.error.bind(console, '[mongodb] connection error:'));
   db.once('open', ()=>{
       //We're connected
-    console.log('Status 200 => OK[mongoDB]...');
+    console.log('%cStatus 200 => OK[mongoDB]', 'color: white; background: green; font-weight: bold;');
       //Build model
     let todo =  new Todo({
       title,
@@ -70,7 +70,7 @@ app.post('/todos', (req, res) => {
       //Save to DB
     todo.save((err)=>{
       if(err) return console.error.bind(console, err);
-      console.log('data saved successfully..');
+      console.log('data saved successfully');
       return res.json({title, datetime, completed});
     });
   });
@@ -79,7 +79,7 @@ app.post('/todos', (req, res) => {
 
 //Delete data
 app.delete('/todos/:_id', (req, res) => {
-  console.log(`[${req.params._id}] delete request..`);
+  console.log(`[${req.params._id}] delete request`);
   let _id = req.params._id;
   /*****************************************DB***********************************************/
   mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -87,7 +87,7 @@ app.delete('/todos/:_id', (req, res) => {
   db.on('error', console.error.bind(console, '[mongodb] connection error:'));
   db.once('open', ()=>{
       //We're connected
-    console.log('Status 200 => OK[mongoDB]...');
+    console.log('%cStatus 200 => OK[mongoDB]', 'color: white; background: green; font-weight: bold;');
     Todo.deleteOne({_id}, err=>console.error.bind(console, err));
     return res.json({_id});
   /*****************************************DB***********************************************/
