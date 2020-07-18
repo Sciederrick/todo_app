@@ -10,11 +10,11 @@ const getters = {
 
 const actions = {
   async fetchTodos({ commit }){
-    const response = await axios.get('http://localhost:3000/todos');
+    const response = await axios.get('http://localhost:5000/todos');
     commit('setTodos', response.data);
   },
   async addTodo({ commit }, {title, datetime}){
-    let response = await axios.post('http://localhost:3000/todos',
+    let response = await axios.post('http://localhost:5000/todos',
     {
      title,
      datetime,
@@ -23,7 +23,7 @@ const actions = {
     commit('newTodo', response.data);
   },
   async deleteTodo({ commit }, _id){
-    await axios.delete(`http://localhost:3000/todos/${_id}`);
+    await axios.delete(`http://localhost:5000/todos/${_id}`);
     commit('removeTodo', _id);
   }
 };
