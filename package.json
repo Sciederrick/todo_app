@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server/index"
+    "start": "node server/index.js"
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "tailwind-build": "postcss src/assets/tailwind.css -o public/build/tailwind.css",
     "lint": "vue-cli-service lint",
-    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then yarn run build ; fi ",
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then yarn run build ; fi "
   },
   "dependencies": {
     "autoprefixer": "^9.8.0",
