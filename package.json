@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "tailwind-build": "postcss src/assets/tailwind.css -o public/build/tailwind.css",
