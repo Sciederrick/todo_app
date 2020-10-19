@@ -1,9 +1,29 @@
-import blankTask from './components/blankTask.vue'
-import addTask from './components/addTask.vue'
-import myTodos from './components/myTodos.vue'
+import Home from '@/views/Home.vue'
+import AddTask from '@/components/AddTask.vue'
+import Calendar from '@/components/Calendar.vue'
+import Settings from '@/components/Settings.vue'
 
 export default [
-  {path:'/', component:blankTask},
-  {path:'/add', component:addTask},
-  {path:'/todos', component:myTodos}
+  {
+    path:'/',
+    name:'home',
+    component:Home,
+    children:[
+      {
+        path:'AddTask',
+        name:'addTask',
+        component:AddTask
+      },
+      {
+        path:'Calendar',
+        name:'calendar',
+        component:Calendar
+      },
+      {
+        path:'Settings',
+        name:'settings',
+        component:Settings
+      }
+    ]
+  }
 ]

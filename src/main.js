@@ -3,18 +3,20 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Routes from './routes'
 import store from './store'
-import '@fortawesome/fontawesome-free/css/all.css'
-import '@fortawesome/fontawesome-free/js/all.js'
+import './assets/css/tailwind.css'
+import '../icons.js'
+import axios from 'axios'
 
 Vue.config.productionTip = false
-Vue.use(VueRouter);
+Vue.use(VueRouter)
+Vue.prototype.$axios = axios
 
 const router = new VueRouter({
   mode: 'history',
   routes: Routes
-});
+})
 
-export const bus = new Vue();
+export const bus = new Vue()
 
 new Vue({
   store,
