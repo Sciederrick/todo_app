@@ -1,10 +1,10 @@
-const config = require('../config')
-const mongoose = require('mongoose');
+require('dotenv').config()
+const { connect, connection } = require('mongoose');
 const db = {}
 
 db.init = ()=>{
-  mongoose.connect(config.mongo.uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  const db = mongoose.connection;
+  connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  const db = connection;
   db.on('error', console.error.bind(console, '[mongodb] connection error:'));
   db.once('open', ()=>{
     //We're connected

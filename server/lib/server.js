@@ -1,4 +1,4 @@
-const config = require('../config')
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -106,7 +106,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 server.init = ()=>{
-  app.listen(config.httpPort||5000, ()=>{
+  app.listen(process.env.PORT||5000, ()=>{
     console.log('\x1b[34m%s\x1b[0m', `server listening`)
   });
 }
