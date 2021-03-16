@@ -4,7 +4,7 @@
     <div id="header" class="h-10 ml-2">
       <div class="float-left md:hidden text-3xl" :class="{ 'text-gray-300':toggle }">
         <fa-icon :icon="['fas', 'user-circle']" size="1x"/>
-        <p class="pl-2 inline text-sm underline">fullstack dev</p>
+        <p class="pl-2 inline text-sm">John Doe</p>
       </div>
       <!-- night mode toggle button -->
       <div class="float-right flex flex-col mx-2 md:mx-8 my-2">
@@ -162,6 +162,7 @@
 
 <script>
 import TheNavbar from '@/components/nav.vue'
+import {bus} from '@/main.js'
 export default{
   components:{
     TheNavbar
@@ -194,6 +195,7 @@ export default{
         //     return task._id!==todo_id
         //   })
         // })
+        this.fetchTodos()
       }catch(err){
         console.log(err)
       }
@@ -201,6 +203,10 @@ export default{
   },
   created(){
     this.fetchTodos()
+    bus.$on('todo added', ()=>{
+      // this.todos = data
+      this.fetchTodos()
+    })
   }
 }
 </script>

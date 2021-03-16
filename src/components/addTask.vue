@@ -58,26 +58,27 @@
 </div>
 </template>
 <script>
+import {bus} from '@/main.js'
 export default{
   data(){
     return{
-      modal:{
-        visible:true
-      },
-			task:{
-				userId:'1', //@todo: create user auth
-				title:'',
-				description:'',
-				deadline:'',
-				priority:'',
-				tag:''
-			},
-			post:{
-				status:false,
-				success:false,
-				loading:false,
-				errorMessage:''
-			}
+		modal:{
+			visible:true
+		},
+		task:{
+			userId:'1', //@todo: create user auth
+			title:'',
+			description:'',
+			deadline:'',
+			priority:'',
+			tag:''
+		},
+		post:{
+			status:false,
+			success:false,
+			loading:false,
+			errorMessage:''
+		}
     }
   },
 	methods:{
@@ -91,6 +92,7 @@ export default{
 				this.post.success = true
 				this.post.loading = false
 				setTimeout(()=>this.post.status = false, 10000)
+				bus.$emit('todo added', this.task)
 			}catch(err){
 				this.post.errorMessage = err.response.data.error
 				this.post.status = true

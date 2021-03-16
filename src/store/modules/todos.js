@@ -11,6 +11,7 @@ const getters = {
 const actions = {
   async fetchTodos({ commit }){
     const response = await axios.get('todos');
+    console.log(response)
     commit('setTodos', response.data);
   },
   async addTodo({ commit }, {title, datetime}){
