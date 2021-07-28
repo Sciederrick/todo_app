@@ -8,19 +8,19 @@ export default [
     path:'/',
     name:'home',
     component:Home,
-    children:[
+    children: [
       {
-        path:'AddTask',
+        path:'/AddTask',
         name:'addTask',
         component:AddTask
       },
       {
-        path:'Calendar',
+        path:'/Calendar',
         name:'calendar',
         component:Calendar
       },
       {
-        path:'Settings',
+        path:'/Settings',
         name:'settings',
         component:Settings
       }

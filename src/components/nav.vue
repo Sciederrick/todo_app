@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed bottom-0 w-screen md:w-auto md:left-0 md:inset-y-0 flex justify-around md:justify-start md:flex-col md:items-center px-1 md:py-4 shadow bg-yellow-400">
+  <nav class="fixed bottom-0 w-screen md:w-auto md:left-0 md:inset-y-0 flex justify-around md:justify-start md:flex-col md:items-center px-1 md:py-4 shadow bg-yellow-400 z-50">
     <fa-icon class="hidden md:block mb-12" :icon="['fas', 'user-circle']" size="3x" color="darkBlue"/>
     <router-link :to="{name:'home'}">
       <fa-icon class="my-2 md:my-10 md:text-2xl" :icon="['fas', 'tasks']" size="1x" color="darkBlue"/>
@@ -18,3 +18,4 @@
     </router-link>
   </nav>
 </template>
+

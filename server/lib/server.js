@@ -1,4 +1,8 @@
-require('dotenv').config()
+const result = require('dotenv').config({ path: 'server/.env'})
+if (result.error) {
+  console.log(result.error)
+}
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -80,8 +84,7 @@ app.delete('/api/todos/:deadline_id/:todo_id', (req, res) => {
     if(err){
       res.status(500).json({err})
     }else{
-      console.log('todo: ',todo)
-      if(todo.todos.length === 0){
+      if(todo.todos.length == 0){
         Todo.deleteOne({_id:deadline_id}, (err)=>{
           if(err){
             res.status(500).json({err})
