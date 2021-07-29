@@ -1,13 +1,38 @@
 <template>
 <div class="fixed inset-0 h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center bg-teal-lightest font-sans bg-yellow-500 bg-opacity-75 z-10">
   <!-- Calendar -->
-  <div class="md:mx-20 antialised">
+  <div class="md:mx-20 md: md:border md: border-white md:bg-yellow-500 md:bg-opacity-75 md:p-2 antialised">
     <!-- Header -->
-    <div class="bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white">{{year}}&nbsp;{{MONTH_NAMES[month]}}</div>
+    <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white">
+      <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
+      <div class="border rounded-lg px-1" style="padding-top: 2px;">
+        <button 
+          type="button"
+          class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center focus:outline-none" 
+          :class="{'cursor-not-allowed opacity-25': month == 0 }"
+          :disabled="month == 0 ? true : false"
+          @click="month--">
+          <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>  
+        </button>
+        <div class="border-r inline-flex h-6"></div>		
+        <button 
+          type="button"
+          class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1 focus:outline-none" 
+          :class="{'cursor-not-allowed opacity-25': month == 11 }"
+          :disabled="month == 11 ? true : false"
+          @click="month++">
+          <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>									  
+        </button>
+      </div>
+    </div>
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-12 md:w-20 lg:w-32 xl:w-40 border text-center font-bold py-2 bg-white"
+        class="w-12 md:w-20 lg:w-32 border text-center font-bold py-2 bg-white"
         >
         {{day}}
       </div>
@@ -16,7 +41,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-5 gap-1 lg:gap-2">
       <div 
         v-for="i in getNoOfDays" :key="i"
-        class="w-12 md:w-20 lg:w-32 xl:w-40 border text-center font-semibold py-2 bg-white text-gray-700"
+        class="w-12 md:w-20 lg:w-32 border text-center font-semibold py-2 bg-white text-gray-700"
         >
         {{i}}
       </div>
