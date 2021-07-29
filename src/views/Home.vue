@@ -1,5 +1,6 @@
 <template>
   <div class="clear-both px-2 pt-2 lg:pl-8 md:pt-0 text-sm md:text-base" id="main">
+    <ErrorList v-if="deleteErrors" :error="deleteErrors"/>
     <!-- component -->
     <div class="relative w-7/8 m-2 md:m-8 md:mt-0">
       <div class="border-r-2 border-gray-500 absolute h-full top-0 linePosition"></div>
@@ -151,7 +152,11 @@
 
 <script>
 import {bus} from '@/main.js'
+import ErrorList from '@/components/ErrorList.vue'
 export default{
+  components: {
+    ErrorList
+  },
   data() {
     return {
       index: 0
@@ -160,6 +165,9 @@ export default{
   computed: {
     todos() {
       return this.$store.getters.allTodos
+    },
+    deleteErrors() {
+      return this.$store.getters.getDeleteTodoFormErrors
     }
   },
   methods:{
