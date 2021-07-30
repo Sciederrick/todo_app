@@ -1,7 +1,7 @@
 <template>
-<div class="fixed inset-0 h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center bg-teal-lightest font-sans bg-yellow-500 bg-opacity-75 z-10">
+<div class="fixed inset-0 h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center font-sans bg-yellow-700 bg-opacity-75 z-10">
   <!-- Calendar -->
-  <div class="md:mx-20 md: md:border md: border-white md:bg-yellow-500 md:bg-opacity-75 md:p-2 antialised">
+  <div class="md:mx-20 md: md:border md:rounded md:border-white md:bg-blue-900 md:bg-opacity-75 md:p-2 antialised">
     <!-- Header -->
     <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
@@ -32,7 +32,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-12 md:w-20 lg:w-32 border text-center font-bold py-2 bg-white"
+        class="w-12 md:w-20 lg:w-32 border text-center font-bold py-2 bg-white rounded shadow"
         >
         {{day}}
       </div>
@@ -41,9 +41,21 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-5 gap-1 lg:gap-2">
       <div 
         v-for="i in getNoOfDays" :key="i"
-        class="w-12 md:w-20 lg:w-32 border text-center font-semibold py-2 bg-white text-gray-700"
+        class="h-20 w-12 md:w-20 lg:w-32 border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
         >
         {{i}}
+        <ul 
+          v-if="events"
+          class="text-xs font-mono text-gray-500 text-left underline pl-2">
+            <li v-for="event in events" :key="event._id">
+              <span 
+                v-if="event.deadline.split('-')[0] == year 
+                && event.deadline.split('-')[1] == month + 1
+                && event.deadline.split('-')[2] == i">
+                  {{event.title|capLength(12)}}
+              </span>
+            </li> 
+        </ul>
       </div>
     </div>
   </div>
@@ -56,7 +68,8 @@ export default{
       MONTH_NAMES: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       DAYS: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       year: '',
-      month: ''
+      month: '',
+      events: []
     }
   },
   computed: {
@@ -71,9 +84,38 @@ export default{
       this.month = today.getMonth()
       this.year = today.getFullYear()
     },
+    initEvents() {
+      let todos = this.$store.getters.allTodos
+      let events = []
+      let temp = {}
+      todos.forEach(el => {
+        temp.deadline = el.deadline.split('T')[0]
+        el.todos.forEach(el => {
+          temp.title = el.title
+          temp.priority = el.priority
+          temp.tag = el.tag
+          temp._id = el._id
+        })
+        events.push(temp)
+        temp = {}
+      })
+      this.events = [...events]
+    },
+    fetchEvents() {
+      this.$store.dispatch('fetchTodos')
+    }
   },
   created() {
     this.initDate()
-  }
+  },
+  beforeMount() {
+    this.fetchEvents()
+    this.initEvents()
+  },
+  filters: {
+    capLength(str, length) {
+      return str.substr(0, length).concat('...')
+    }
+  },
 }
 </script>

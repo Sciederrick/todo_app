@@ -79,7 +79,7 @@
               </div>
           </div>
           </li>
-          <li v-if="todos.length===0" class="mb-2">
+          <li v-if="todos.length==0" class="mb-2">
             <div class="flex items-center mb-1">
               <div class="bg-gray-500 rounded-full h-3 w-3 md:h-8 md:w-8"></div>
               <div class="flex-1 ml-2 font-mono md:font-medium text-xs md:text-base lg:text-lg text-blue-600">
@@ -171,18 +171,22 @@ export default{
     }
   },
   methods:{
-    fetchTodos(){
+    fetchTodos() {
       this.$store.dispatch('fetchTodos')
     },
-    deleteTodo(deadline_id, todo_id){
+    deleteTodo(deadline_id, todo_id) {
       const todo = {deadline: deadline_id, id:todo_id}
       this.$store.dispatch('deleteTodo', todo)
+      this.fetchTodos()
+    },
+    todoAdded(todo) {
+      this.$store.dispatch('addTodo', todo)
       this.fetchTodos()
     }
   },
   created(){
     this.fetchTodos()
-    bus.$on('todo added', todo => this.$store.dispatch('addTodo', todo))
+    bus.$on('todo added', todo => this.todoAdded(todo))
   }
 }
 </script>
