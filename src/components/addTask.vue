@@ -3,7 +3,7 @@
 	<div class="h-screen w-full absolute flex items-center justify-center">
       <div class="relative bg-white rounded shadow p-8 m-4 max-h-full text-center overflow-y-auto">
         <fa-icon 
-			@click="$router.go(-1)" 
+			@click="goHome" 
 			class="absolute top-0 right-0 m-1 text-2xl cursor-pointer" :icon="['fas', 'times']" color="maroon" size="1x"/>
         <div class="mb-8">
             <div 
@@ -62,7 +62,7 @@
             </form>
         </div>
         <div class="flex justify-center h-10">
-            <button v-show="!formSpinner" @click="postTodo()" class="flex-no-shrink text-white py-2 px-4 rounded bg-teal-400 hover:bg-teal-700 focus:outline-none cursor-pointer">Let's Go</button>
+            <button v-show="!formSpinner" @click.prevent="postTodo()" class="flex-no-shrink text-white py-2 px-4 rounded bg-teal-400 hover:bg-teal-700 focus:outline-none cursor-pointer">Let's Go</button>
         </div>
       </div>
     </div>
@@ -74,7 +74,6 @@ export default{
   name: "addTask",
   data(){
     return{
-		displayModal: true,
 		task:{
 			userId:'1', //@todo: create user auth
 			title:'',
@@ -102,7 +101,10 @@ export default{
 	methods:{
 		postTodo(){
 			this.$store.dispatch('addTodo', this.task)
-			bus.$emit('todo added', this.task)
+			bus.$emit('todo added', undefined)
+		},
+		goHome(){
+			this.$router.push({name: 'home'})
 		}
 	}
 }

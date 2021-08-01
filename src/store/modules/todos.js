@@ -21,6 +21,7 @@ const getters = {
   getAddTodoFormHeader: state => state.systemInfo.addTodo.showFormHeader,
   getAddTodoSpinner: state => state.systemInfo.addTodo.showSpinner,
   getAddTodoFormStatus: state => state.systemInfo.addTodo.showFormStatus,
+  getFetchTodoFormErrors: state => state.errors.fetchTodos,
   getAddTodoFormErrors: state => state.errors.addTodo,
   getDeleteTodoFormErrors: state => state.errors.deleteTodo
 };
@@ -35,7 +36,7 @@ const actions = {
       })
       commit('setTodos', todos)
     }catch(err){
-      commit('addTodoFormErrors', err)
+      commit('fetchTodoFormErrors', err)
     }
   },
   async addTodo({ commit }, task){
@@ -48,7 +49,7 @@ const actions = {
       commit('addTodoFormStatus', true)
       commit('addTodoFormHeader', true)
       commit('addTodoFormSpinner', false)
-      setTimeout(()=>commit('addTodoFormStatus', true), 10000)
+      // setTimeout(()=>commit('addTodoFormStatus', true), 10000)
     }catch(err){
       commit('addTodoFormErrors', err.response.data.error)
       commit('addTodoFormStatus', false)
@@ -74,6 +75,7 @@ const mutations = {
   addTodoFormHeader: (state, bool) => state.systemInfo.addTodo.showFormHeader = bool,
   addTodoFormSpinner: (state, bool) => state.systemInfo.addTodo.showSpinner = bool,
   addTodoFormStatus: (state, bool) => state.systemInfo.addTodo.showFormStatus = bool,
+  fetchTodoFormErrors: (state, msg) => state.errors.fetchTodos = msg,
   addTodoFormErrors: (state, msg) => state.errors.addTodo = msg,
   deleteTodoFormErrors: (state, msg) => state.errors.deleteTodo = msg
 };

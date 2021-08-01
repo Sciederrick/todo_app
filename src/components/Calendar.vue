@@ -51,7 +51,9 @@
               <span 
                 v-if="event.deadline.split('-')[0] == year 
                 && event.deadline.split('-')[1] == month + 1
-                && event.deadline.split('-')[2] == i">
+                && event.deadline.split('-')[2] == i"
+                :class="[event.priority == 'Critical' ? 'text-red-600' : event.priority == 'Important' ? 'text-yellow-600' : 'text-blue-400']"
+                >
                   {{event.title|capLength(12)}}
               </span>
             </li> 

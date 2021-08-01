@@ -1,8 +1,16 @@
 <template>
   <div class="clear-both px-2 pt-2 lg:pl-8 md:pt-0 text-sm md:text-base" id="main">
-    <ErrorList v-if="deleteErrors" :error="deleteErrors"/>
+    <div v-if="fetchTodoErrors">
+      <ErrorList :error="fetchTodoErrors"/>
+    </div>
+    <div v-else-if="deleteErrors" >
+      <ErrorList :error="deleteErrors"/>
+    </div>
+
     <!-- component -->
-    <div class="relative w-7/8 m-2 md:m-8 md:mt-0">
+    <div 
+      v-else
+      class="relative w-7/8 m-2 md:m-8 md:mt-0">
       <div class="border-r-2 border-gray-500 absolute h-full top-0 linePosition"></div>
       <ul class="list-none m-0 p-0">
         <li 
@@ -59,88 +67,16 @@
               </div>
               <div v-if="todo.todos.length==2||todo.todos.length==1" class="hidden lg:block ml-4 md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
+                <CardSkeleton/>
               </div>
               <div v-if="todo.todos.length==1" class="hidden lg:block ml-4 md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
+                <CardSkeleton/>
               </div>
           </div>
           </li>
           <li v-if="todos.length==0" class="mb-2">
-            <div class="flex items-center mb-1">
-              <div class="bg-gray-500 rounded-full h-3 w-3 md:h-8 md:w-8"></div>
-              <div class="flex-1 ml-2 font-mono md:font-medium text-xs md:text-base lg:text-lg text-blue-600">
-                <sup>{{new Date().toDateString().split(' ')[0]}}</sup>
-                {{new Date().toDateString().split(' ')[2]}},
-                {{new Date().toDateString().split(' ')[1]}}
-                {{new Date().toDateString().split(' ')[3]}}
-                {{new Date().toDateString().split(' ')[4]}} - Track your todos today
-              </div>
-            </div>
-            <div class="ml-8 md:ml-16">
-              v0.1.0 - v0.2.2
-              <p class="text-gray-700 text-xs">
-              Coz failing to plan is planning to fail.
-              </p>
-              <p class="text-gray-700 text-xs pb-4">
-              Add and delete todos in the most fun interactive interface, curated by d* enterprises
-              </p>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="lg:block ml-12 md:ml-16 opacity-25">
-                <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
-              </div>
-              <div class="hidden md:block ml-4 md:ml-16 opacity-25">
-                <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
-              </div>
-              <div class="hidden lg:block ml-4 md:ml-16 opacity-25">
-                <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
-              </div>
-              <div class="hidden lg:block ml-4 md:ml-16 opacity-25">
-                <!-- dummy card placeholder -->
-                <div class="relative w-48">
-                  <div class="w-full bg-gray-600 my-2 border-8 rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="w-full bg-gray-500 my-6 border rounded-lg border-gray-500"></div>
-                  <div class="absolute right-0 w-1/4 bg-gray-500 mb-4 border rounded-lg border-gray-500"></div>
-                </div>
-              </div>
-            </div>
+            <DummyNoTodoCard/>
           </li>
         </ul>
       </div>
@@ -153,9 +89,13 @@
 <script>
 import {bus} from '@/main.js'
 import ErrorList from '@/components/ErrorList.vue'
+import CardSkeleton from '@/components/CardSkeleton.vue'
+import DummyNoTodoCard from '@/components/DummyNoTodoCard.vue'
 export default{
   components: {
-    ErrorList
+    ErrorList,
+    CardSkeleton,
+    DummyNoTodoCard
   },
   data() {
     return {
@@ -168,6 +108,9 @@ export default{
     },
     deleteErrors() {
       return this.$store.getters.getDeleteTodoFormErrors
+    },
+    fetchTodoErrors() {
+      return this.$store.getters.getFetchTodoFormErrors
     }
   },
   methods:{
@@ -179,14 +122,14 @@ export default{
       this.$store.dispatch('deleteTodo', todo)
       this.fetchTodos()
     },
-    todoAdded(todo) {
-      this.$store.dispatch('addTodo', todo)
+    todoAdded() {
       this.fetchTodos()
+      this.$forceUpdate()
     }
   },
   created(){
     this.fetchTodos()
-    bus.$on('todo added', todo => this.todoAdded(todo))
+    bus.$on('todo added', () => this.todoAdded())
   }
 }
 </script>
