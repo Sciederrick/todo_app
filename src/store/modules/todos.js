@@ -16,15 +16,15 @@ const state = {
   }
 };
 
-const getters = {
-  allTodos: state => state.todos,
-  getAddTodoFormHeader: state => state.systemInfo.addTodo.showFormHeader,
-  getAddTodoSpinner: state => state.systemInfo.addTodo.showSpinner,
-  getAddTodoFormStatus: state => state.systemInfo.addTodo.showFormStatus,
-  getFetchTodoFormErrors: state => state.errors.fetchTodos,
-  getAddTodoFormErrors: state => state.errors.addTodo,
-  getDeleteTodoFormErrors: state => state.errors.deleteTodo
-};
+// const getters = {
+//   allTodos: state => state.todos,
+//   getAddTodoFormHeader: state => state.systemInfo.addTodo.showFormHeader,
+//   getAddTodoSpinner: state => state.systemInfo.addTodo.showSpinner,
+//   getAddTodoFormStatus: state => state.systemInfo.addTodo.showFormStatus,
+//   getFetchTodoFormErrors: state => state.errors.fetchTodos,
+//   getAddTodoFormErrors: state => state.errors.addTodo,
+//   getDeleteTodoFormErrors: state => state.errors.deleteTodo
+// };
 
 const actions = {
   async fetchTodos({ commit }){
@@ -82,7 +82,6 @@ const mutations = {
 
 export default {
   state,
-  getters,
   actions,
   mutations
 };

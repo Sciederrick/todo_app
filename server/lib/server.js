@@ -1,4 +1,4 @@
-const result = require('dotenv').config({ path: 'server/.env'})
+const result = require('dotenv').config({ path:'server/.env' })
 if (result.error) {
   console.log(result.error)
 }
@@ -80,19 +80,20 @@ app.post('/api/todos', (req, res) => {
 app.delete('/api/todos/:deadline_id/:todo_id', (req, res) => {
   let deadline_id = req.params.deadline_id;
   let todo_id = req.params.todo_id;
+  
   Todo.findOneAndUpdate({_id:deadline_id}, {$pull:{todos:{_id:todo_id}}}, {new:true}, (err, todo)=>{
-    if(err){
+    if(err) {
       res.status(500).json({err})
-    }else{
-      if(todo.todos.length == 0){
-        Todo.deleteOne({_id:deadline_id}, (err)=>{
-          if(err){
+    } else {
+      if(todo.todos && todo.todos.length == 0) {
+        Todo.deleteOne({_id:deadline_id}, (err) => {
+          if(err) {
             res.status(500).json({err})
-          }else{
+          } else {
             res.status(200).json({message:'deadline now empty'})
           }
         })
-      }else{
+      } else {
         res.status(200).json({todo})
       }
     }

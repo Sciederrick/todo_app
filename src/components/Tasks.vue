@@ -26,7 +26,7 @@
                 {{new Date(todo.deadline).toString().split(" ")[3]}}
               </div>
             </div>
-            <div class="flex flex-wrap">
+            <div class="grid grid-flow-row md:grid-cols-2 lg:grid-cols-3 gap-4">
               <!-- card container -->
               <div 
                 v-for="task in todo.todos" 
@@ -34,14 +34,14 @@
                 class="m-4 ml-8 lg:ml-24">
                 <!-- card -->
                 <div class="max-w-sm md:max-w-xs flex flex-no-wrap">
-                  <div class="rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden opacity-75" style="width:30px;">
-                    <img class="h-full w-full object-cover" :src="require(`@/assets/img/hugo-barbosa-TnG2q8FtXsg-unsplash.jpg`)" alt="tag">
+                  <div class="rounded-l text-center overflow-hidden opacity-75" style="width:30px;">
+                    <img class="h-full w-full object-cover" :src="require(`@/assets/img/hugo-barbosa-TnG2q8FtXsg-unsplash.jpg`)" alt="">
                   </div>
-                  <div class="relative border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal" style="width:220px;">
+                  <div class="relative border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-r p-4 flex flex-col justify-between leading-normal" style="width:220px;">
                     <div class="mb-1">
                       <button 
                         :id="task._id" 
-                        @click.prevent="deleteTodo(todo._id, task._id)" 
+                        @click.prevent="deleteTodo({deadline:todo._id, id:task._id});fetchTodos();" 
                         type="submit" 
                         class="absolute right-0 top-0 m-1 px-2 hover:bg-gray-200 focus:outline-none">
                         <fa-icon :icon="['fas', 'times']" color="red"/>
@@ -65,11 +65,11 @@
                   </div>
                 </div>
               </div>
-              <div v-if="todo.todos.length==2||todo.todos.length==1" class="hidden lg:block ml-4 md:ml-16 opacity-25">
+              <div v-if="todo.todos.length==2||todo.todos.length==1" class="hidden lg:block m-4 ml-8 md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
                 <CardSkeleton/>
               </div>
-              <div v-if="todo.todos.length==1" class="hidden lg:block ml-4 md:ml-16 opacity-25">
+              <div v-if="todo.todos.length==1" class="hidden lg:block m-4 ml-8  md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
                 <CardSkeleton/>
               </div>
@@ -80,14 +80,11 @@
           </li>
         </ul>
       </div>
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
   </div>
 </template>
 
 <script>
-import {bus} from '@/main.js'
+import { mapState, mapActions } from 'vuex'
 import ErrorList from '@/components/ErrorList.vue'
 import CardSkeleton from '@/components/CardSkeleton.vue'
 import DummyNoTodoCard from '@/components/DummyNoTodoCard.vue'
@@ -97,39 +94,17 @@ export default{
     CardSkeleton,
     DummyNoTodoCard
   },
-  data() {
-    return {
-      index: 0
-    }
-  },
-  computed: {
-    todos() {
-      return this.$store.getters.allTodos
-    },
-    deleteErrors() {
-      return this.$store.getters.getDeleteTodoFormErrors
-    },
-    fetchTodoErrors() {
-      return this.$store.getters.getFetchTodoFormErrors
-    }
-  },
-  methods:{
-    fetchTodos() {
-      this.$store.dispatch('fetchTodos')
-    },
-    deleteTodo(deadline_id, todo_id) {
-      const todo = {deadline: deadline_id, id:todo_id}
-      this.$store.dispatch('deleteTodo', todo)
-      this.fetchTodos()
-    },
-    todoAdded() {
-      this.fetchTodos()
-      this.$forceUpdate()
-    }
-  },
+  computed: mapState({
+    todos:'todos',
+    deleteErrors: state => state.errors.deleteTodo,
+    fetchTodoErrors: state => state.errors.fetchTodos
+  }),
+  methods: mapActions([
+    'fetchTodos',
+    'deleteTodo'
+  ]),
   created(){
     this.fetchTodos()
-    bus.$on('todo added', () => this.todoAdded())
   }
 }
 </script>

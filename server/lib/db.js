@@ -1,4 +1,4 @@
-const result = require('dotenv').config({ path: 'server/.env'})
+const result = require('dotenv').config({ path:'server/.env' })
 if (result.error) {
   console.log(result.error)
 }
@@ -7,7 +7,7 @@ const { connect, connection } = require('mongoose');
 const db = {}
 
 db.init = ()=>{
-  connect(process.env.MONGO_URI_LOCAL, { useNewUrlParser: true, useUnifiedTopology: true })
+  connect(process.env.MONGO_URI_LOCAL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   const db = connection;
   db.on('error', console.error.bind(console, '[mongodb] connection error:'));
   db.once('open', ()=>{

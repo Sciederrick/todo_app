@@ -1,5 +1,5 @@
 <template>
-<div class="fixed inset-0 h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center font-sans bg-yellow-700 bg-opacity-75 z-10">
+<div class="w-full flex flex-col items-center justify-center font-sans">
   <!-- Calendar -->
   <div class="md:mx-20 md: md:border md:rounded md:border-white md:bg-blue-900 md:bg-opacity-75 md:p-2 antialised">
     <!-- Header -->
@@ -87,7 +87,7 @@ export default{
       this.year = today.getFullYear()
     },
     initEvents() {
-      let todos = this.$store.getters.allTodos
+      let todos = this.$store.state.todos
       let events = []
       let temp = {}
       todos.forEach(el => {
@@ -105,12 +105,10 @@ export default{
     },
     fetchEvents() {
       this.$store.dispatch('fetchTodos')
-    }
+    },
   },
   created() {
     this.initDate()
-  },
-  beforeMount() {
     this.fetchEvents()
     this.initEvents()
   },
