@@ -72,5 +72,6 @@ export default {
       toggle: true,
       currentTabComponent: "my-tasks",
     }
-  },
-pt>
+  }
+}
+</script>
