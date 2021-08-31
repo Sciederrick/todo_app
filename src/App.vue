@@ -1,38 +1,38 @@
 <template>
-  <div id="app" class="w-screen h-full overflow-x-hidden font-sans">
-    <TheNavbar/>
-    <div class="w-screen">
-      <div class="absolute inset-x-0 top-0 h-screen overflow-y-auto pl-0 md:pl-20" :class="{ 'bg-black':toggle }">
-        <div id="header" class="h-10 ml-2">
-          <div class="float-left md:hidden text-3xl" :class="{ 'text-gray-300':toggle }">
-              <fa-icon :icon="['fas', 'user-circle']" size="1x"/>
-              <p class="pl-2 inline text-sm">John Doe</p>
-          </div>
-          <!-- night mode toggle button -->
-          <div class="float-right flex flex-col mx-2 md:mx-8 my-2">
-              <label for="unchecked" class="mt-3 inline-flex items-center cursor-pointer">
-                  <span class="relative">
-                  <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner">
-                      <fa-icon class="ml-1" :icon="['fas', 'sun']" size="1x" color="yellow"/>
-                      <fa-icon class="float-right mt-1 mr-1 text-sm" :icon="['fas', 'moon']" size="1x" color="yellow"/>
-                  </span>
-                  <span class="absolute block w-4 h-4 mt-1 mx-1 bg-white rounded-full shadow inset-y-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out" :class="{'right-0':toggle, 'left-0':!toggle}">
-                      <input @click="toggle=!toggle" id="unchecked" type="checkbox" class="absolute opacity-0 w-0 h-0"/>
-                  </span>
-                  </span>
-              </label>
-          </div>
-        <!-- NB! focus-within must be enabled for boxShadow in variants -->
+  <div id="app" class="md:flex font-sans">
+    <my-navbar @changeTab="currentTabComponent = $event"/>
+    <div class="h-screen overflow-y-auto w-full md:pl-24" :class="{ 'bg-black':toggle }">
+      <div id="header" class="h-10 ml-2">
+        <div class="float-left md:hidden text-3xl" :class="{ 'text-gray-300':toggle }">
+            <fa-icon :icon="['fas', 'clipboard-list']" size="1x"/>
+            <p class="pl-2 inline text-sm">Todo-Tracker</p>
         </div>
-        <transition name="fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
+        <!-- night mode toggle button -->
+        <div class="float-right flex flex-col mx-2 md:mx-8 my-2">
+            <label for="unchecked" class="mt-3 inline-flex items-center cursor-pointer">
+                <span class="relative">
+                <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner">
+                    <fa-icon class="ml-1" :icon="['fas', 'sun']" size="1x" color="yellow"/>
+                    <fa-icon class="float-right mt-1 mr-1 text-sm" :icon="['fas', 'moon']" size="1x" color="yellow"/>
+                </span>
+                <span class="absolute block w-4 h-4 mt-1 mx-1 bg-white rounded-full shadow inset-y-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out" :class="{'right-0':toggle, 'left-0':!toggle}">
+                    <input @click="toggle=!toggle" id="unchecked" type="checkbox" class="absolute opacity-0 w-0 h-0"/>
+                </span>
+                </span>
+            </label>
+        </div>
+      <!-- NB! focus-within must be enabled for boxShadow in variants -->
       </div>
+      <component :is="currentTabComponent" :toggle="toggle"></component>
     </div>
   </div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,100&family=Roboto:wght@300;400;500&display=swap');
+#app {
+  font-family: 'Roboto', sans-serif;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
@@ -54,15 +54,23 @@
 </style>
 
 <script>
-import TheNavbar from '@/components/Nav.vue'
+import Navbar from '@/components/Nav.vue'
+import Tasks from '@/components/Tasks.vue'
+import AddTask from '@/components/AddTask.vue'
+import Calendar from '@/components/Calendar.vue'
+import Settings from '@/components/Settings.vue'
 export default {
   components: {
-    TheNavbar,
+    'my-navbar':Navbar,
+    'my-tasks':Tasks,
+    'add-task':AddTask,
+    'my-calendar':Calendar,
+    'my-settings':Settings,
   },
   data(){
     return {
-      toggle: true
+      toggle: true,
+      currentTabComponent: "my-tasks",
     }
-  }
-}
-</script>
+  },
+pt>
