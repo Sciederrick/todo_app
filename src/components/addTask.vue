@@ -50,9 +50,7 @@
 					<div class="flex justify-center items-center my-8 mx-2">
 						<select class="focus:outline-none" v-model="task.tag" required>
 							<option disabled value="">select tag</option>
-							<option>Programming</option>
-							<option>Lifestyle</option>
-							<option>Fitness</option>
+							<option v-for="(tag, index) in tags" :key="tag+index">{{tag}}</option>
 						</select>
 					</div>
 					<div class="flex justify-center h-10">
@@ -69,10 +67,9 @@ export default{
   data(){
     return{
 			task:{
-				userId:'1', //@todo: create user auth
+				deadline:'',
 				title:'',
 				description:'',
-				deadline:'',
 				priority:'',
 				tag:''
 			},
@@ -82,7 +79,8 @@ export default{
 		'formHeader': state => state.systemInfo.addTodo.showFormHeader,
 		'formSpinner': state => state.systemInfo.addTodo.showSpinner,
 		'formStatus': state => state.systemInfo.addTodo.showFormStatus,
-		'formErrorMessage': state => state.errors.addTodo
+		'formErrorMessage': state => state.errors.addTodo,
+		'tags': state => state.appSettings.tags
   }),
 	methods: mapActions({
 		postTodo: 'addTodo'

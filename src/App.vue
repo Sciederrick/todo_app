@@ -3,9 +3,11 @@
     <my-navbar @changeTab="currentTabComponent = $event"/>
     <div class="h-screen overflow-y-auto w-full md:pl-24" :class="{ 'bg-black':toggle }">
       <div id="header" class="h-10 ml-2">
-        <div class="float-left md:hidden text-3xl" :class="{ 'text-gray-300':toggle }">
-            <fa-icon :icon="['fas', 'clipboard-list']" size="1x"/>
-            <p class="pl-2 inline text-sm">Todo-Tracker</p>
+        <div class="w-24 float-left md:hidden text-3xl flex" :class="{ 'text-gray-300':toggle }">
+            <div class="w-6 h-6 pt-2">
+              <img :src="require('@/assets/logo/logo.svg')"/>
+            </div>
+            <div class="pl-1 text-gray-300" :class="{ 'text-gray-800':toggle }">Todo</div>
         </div>
         <!-- night mode toggle button -->
         <div class="float-right flex flex-col mx-2 md:mx-8 my-2">
@@ -27,9 +29,9 @@
     </div>
   </div>
 </template>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,100&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
 #app {
   font-family: 'Roboto', sans-serif;
 }

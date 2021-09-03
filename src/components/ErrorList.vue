@@ -2,7 +2,7 @@
 <!-- component -->
 <div
     v-if="showComponent"
-    class="fixed top-4 w-5/6 lg:w-3/4 bg-red-200 border-l-8 border-red-900 mb-2 z-10">
+    class="fixed top-4 w-5/6 lg:w-1/2 bg-red-200 border-l-8 border-red-900 mb-2 z-10">
     <div class="flex items-center">
         <div class="p-2">
             <div class="flex items-center">

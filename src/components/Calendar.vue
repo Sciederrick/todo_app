@@ -1,11 +1,11 @@
 <template>
 <div class="w-full flex flex-col items-center justify-center font-sans">
   <!-- Calendar -->
-  <div class="md:mx-20 md: md:border md:rounded md:border-white md:bg-blue-900 md:bg-opacity-75 md:p-2 antialised">
+  <div class="md:mx-20 md:p-2 antialised">
     <!-- Header -->
     <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
-      <div class="border rounded-lg px-1" style="padding-top: 2px;">
+      <div class="px-1" style="padding-top: 2px;">
         <button 
           type="button"
           class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center focus:outline-none" 

@@ -13,10 +13,10 @@
     <div class="ml-8 md:ml-16">
         v0.1.0 - v0.2.2
         <p class="text-gray-700 text-xs">
-        Coz failing to plan is planning to fail.
+        Plan out your day with Todo-Tracker.
         </p>
         <p class="text-gray-700 text-xs pb-4">
-        Add and delete todos in the most fun interactive interface, curated by d* enterprises
+        Add and delete todos in the most fun interactive interface
         </p>
     </div>
     <div class="flex flex-wrap">

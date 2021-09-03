@@ -1,5 +1,5 @@
 <template>
-  <div class="clear-both px-2 pt-2 lg:pl-8 md:pt-0 text-sm md:text-base" id="main">
+  <div class="clear-both px-2 pt-2 pb-10 md:pb-5 lg:pl-8 md:pt-0 text-sm md:text-base" id="main">
     <div v-if="fetchTodoErrors">
       <ErrorList :error="fetchTodoErrors"/>
     </div>
@@ -34,21 +34,21 @@
                 class="m-4 ml-8 lg:ml-24">
                 <!-- card -->
                 <div class="max-w-sm md:max-w-xs flex flex-no-wrap">
-                  <div class="rounded-l text-center overflow-hidden opacity-75" style="width:30px;">
+                  <div class="rounded-l text-center overflow-hidden opacity-75 bg-gray-300" style="width:30px;">
                     <img class="h-full w-full object-cover" :src="require(`@/assets/img/hugo-barbosa-TnG2q8FtXsg-unsplash.jpg`)" alt="">
                   </div>
                   <div class="relative border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-r p-4 flex flex-col justify-between leading-normal" style="width:220px;">
                     <div class="mb-1">
                       <button 
                         :id="task._id" 
-                        @click.prevent="deleteTodo({deadline:todo._id, id:task._id});fetchTodos();" 
+                        @click.prevent="deleteTodo({deadline:todo.deadline, id:task._id, index: todo._id - 1})" 
                         type="submit" 
                         class="absolute right-0 top-0 m-1 px-2 hover:bg-gray-200 focus:outline-none">
-                        <fa-icon :icon="['fas', 'times']" color="red"/>
+                        <fa-icon :icon="['fas', 'times']"/>
                       </button>
                       <div class="text-gray-900 font-bold text-base mb-2">{{task.title}}</div>
                       <p class="pb-4 text-gray-700 text-xs">{{task.description}}</p>
-                      <span class="absolute right-0 bottom-0 m-1 rounded text-xs text-red-500">
+                      <span class="absolute right-0 bottom-0 m-1 rounded text-xs text-gray-500">
                         {{task.priority}}
                       </span>
                       <span class="absolute left-0 bottom-0 m-1 ml-3 rounded text-xs text-red-500">
@@ -59,23 +59,23 @@
                         <fa-icon 
                           v-else 
                           :icon="['fas', 'hourglass-half']" 
-                          color="gold"/>
+                          color="lightGrey"/>
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div v-if="todo.todos.length==2||todo.todos.length==1" class="hidden lg:block m-4 ml-8 md:ml-16 opacity-25">
+              <div v-show="todo.todos.length==2||todo.todos.length==1" class="hidden lg:block m-4 ml-8 md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
                 <CardSkeleton/>
               </div>
-              <div v-if="todo.todos.length==1" class="hidden lg:block m-4 ml-8  md:ml-16 opacity-25">
+              <div v-show="todo.todos.length==1" class="hidden lg:block m-4 ml-8  md:ml-16 opacity-25">
                 <!-- dummy card placeholder -->
                 <CardSkeleton/>
               </div>
           </div>
           </li>
-          <li v-if="todos.length==0" class="mb-2">
+          <li v-show="todos.length==0" class="mb-2">
             <DummyNoTodoCard/>
           </li>
         </ul>
@@ -101,10 +101,12 @@ export default{
   }),
   methods: mapActions([
     'fetchTodos',
-    'deleteTodo'
+    'deleteTodo',
+    'initAppSettings'
   ]),
   created(){
     this.fetchTodos()
+    this.initAppSettings()
   }
 }
 </script>
