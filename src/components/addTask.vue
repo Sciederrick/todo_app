@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full flex items-center justify-center">
-		<div class="md:w-1/2 bg-white rounded shadow p-4 m-4 max-h-full text-center overflow-y-auto">
+		<div class="w-full md:w-1/2 bg-white rounded shadow p-4 m-4 max-h-full text-center overflow-y-auto">
 			<div class="mb-8">
 				<div 
 					v-if="!formHeader" 

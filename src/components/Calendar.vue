@@ -1,9 +1,9 @@
 <template>
 <div class="w-full flex flex-col items-center justify-center font-sans">
   <!-- Calendar -->
-  <div class="md:mx-20 md:p-2 antialised">
+  <div class="w-full p-2 md:mx-20 antialised">
     <!-- Header -->
-    <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white">
+    <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white" :class="{ 'text-gray-700':!toggle }">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
       <div class="px-1" style="padding-top: 2px;">
         <button 
@@ -65,6 +65,7 @@
 </template>
 <script>
 export default{
+  props: ['toggle'],
   data(){
     return{
       MONTH_NAMES: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
