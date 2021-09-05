@@ -29,7 +29,7 @@
         </button>
       </div>
     </div>
-    <div class="grid grid-flow-row grid-cols-7 grid-rows-1 gap-1 lg:gap-2 mb-2">
+    <div class="grid grid-flow-row grid-cols-7 grid-rows-1 md:gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
         class="w-12 md:w-20 lg:w-32 border text-center font-bold py-2 bg-white rounded shadow"
