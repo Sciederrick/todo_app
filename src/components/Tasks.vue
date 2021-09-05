@@ -47,7 +47,7 @@
                         <fa-icon :icon="['fas', 'times']"/>
                       </button>
                       <div class="text-gray-900 font-bold text-base mb-2">{{task.title}}</div>
-                      <p class="pb-4 text-gray-700 text-xs">{{task.description}}</p>
+                      <p class="pb-4 text-gray-700">{{task.description}}</p>
                       <span class="absolute right-0 bottom-0 m-1 rounded text-xs text-gray-500">
                         {{task.priority}}
                       </span>
