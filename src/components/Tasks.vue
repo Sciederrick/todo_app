@@ -33,11 +33,11 @@
                 :key="task._id" 
                 class="m-4 ml-8 lg:ml-24">
                 <!-- card -->
-                <div class="max-w-sm md:max-w-xs flex flex-no-wrap">
+                <div class="w-full md:max-w-xs flex flex-no-wrap">
                   <div class="rounded-l text-center overflow-hidden opacity-75 bg-gray-300" style="width:30px;">
                     <img class="h-full w-full object-cover" :src="require(`@/assets/img/hugo-barbosa-TnG2q8FtXsg-unsplash.jpg`)" alt="">
                   </div>
-                  <div class="relative border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-r p-4 flex flex-col justify-between leading-normal" style="width:220px;">
+                  <div class="relative w-full border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div class="mb-1">
                       <button 
                         :id="task._id" 

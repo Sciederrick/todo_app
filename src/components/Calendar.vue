@@ -1,7 +1,7 @@
 <template>
 <div class="w-full flex flex-col items-center justify-center font-sans">
   <!-- Calendar -->
-  <div class="w-full p-2 md:mx-20 antialised">
+  <div class="w-full md:w-auto p-2 md:mx-20 antialised">
     <!-- Header -->
     <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white" :class="{ 'text-gray-700':!toggle }">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
