@@ -2,7 +2,7 @@
   <div id="app" class="md:flex font-sans">
     <my-navbar @changeTab="currentTabComponent = $event"/>
     <div class="h-screen overflow-y-auto w-full md:pl-24" :class="{ 'bg-black':toggle }">
-      <div id="header" class="h-10 ml-2">
+      <div id="header" class="h-10 ml-2 mb-4">
         <div class="w-24 float-left md:hidden text-3xl flex" :class="{ 'text-gray-300':toggle }">
             <div class="w-6 h-6 pt-2">
               <img :src="require('@/assets/logo/logo.svg')"/>
