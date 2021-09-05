@@ -1,5 +1,5 @@
 <template>
-<div class="w-full flex flex-col items-center justify-center font-sans">
+<div class="w-full h-5/6 flex items-center justify-center font-sans">
   <!-- Calendar -->
   <div class="w-full md:w-auto p-2 md:mx-20 antialised">
     <!-- Header -->
@@ -32,16 +32,16 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 md:gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-12 md:w-20 lg:w-32 border text-center font-bold py-2 bg-white rounded shadow"
+        class="w-12 md:w-20 lg:w-32 border-none md:border text-center font-bold py-2 bg-white md:rounded md:shadow"
         >
         {{day}}
       </div>
     </div>
     <!-- Body -->
-    <div class="grid grid-flow-row grid-cols-7 grid-rows-5 gap-1 lg:gap-2">
+    <div class="grid grid-flow-row grid-cols-7 grid-rows-5 md:gap-1 lg:gap-2">
       <div 
         v-for="i in getNoOfDays" :key="i"
-        class="h-20 w-12 md:w-20 lg:w-32 border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
+        class="h-20 w-12 md:w-20 lg:w-32 md:border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
         >
         {{i}}
         <ul 

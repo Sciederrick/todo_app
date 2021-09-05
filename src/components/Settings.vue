@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full px-10" :class="{ 'text-gray-300':toggle }">
-    <form class="max-w-sm md:max-w-md mx-auto">
+  <div class="w-full h-3/4 flex items-center md:block px-10 pt-2" :class="{ 'text-gray-300':toggle }">
+    <form class="w-full md:max-w-md mx-auto">
     <!-- Header -->
       <div class="text-center">
         <h2 class="mt-5 text-xl font-bold text-gray-900" :class="{ 'text-green-800':toggle }">
