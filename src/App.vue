@@ -56,9 +56,9 @@
 </style>
 
 <script>
-import Navbar from '@/components/Nav.vue'
+import Navbar from '@/components/nav.vue'
 import Tasks from '@/components/Tasks.vue'
-import AddTask from '@/components/AddTask.vue'
+import AddTask from '@/components/addTask.vue'
 import Calendar from '@/components/Calendar.vue'
 import Settings from '@/components/Settings.vue'
 export default {
