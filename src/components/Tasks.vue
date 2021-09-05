@@ -1,5 +1,5 @@
 <template>
-  <div class="clear-both px-2 pt-2 pb-10 md:pb-5 lg:pl-8 md:pt-0 text-sm md:text-base" id="main">
+  <div class="clear-both px-2 pt-2 pb-10 md:pb-5 lg:pl-8 md:pt-0 md:text-base" id="main">
     <div v-if="fetchTodoErrors">
       <ErrorList :error="fetchTodoErrors"/>
     </div>
@@ -19,7 +19,7 @@
           class="mb-2">
             <div class="flex items-center mb-1">
               <div class="bg-gray-500 rounded-full h-3 w-3 md:h-8 md:w-8"></div>
-              <div class="flex-1 ml-2 font-mono md:font-medium text-xs md:text-base lg:text-lg text-blue-600">
+              <div class="flex-1 ml-2 font-mono md:font-medium md:text-base lg:text-lg text-blue-600">
                 <sup>{{new Date(todo.deadline).toString().split(" ")[0]}}</sup>
                 {{new Date(todo.deadline).toString().split(" ")[2]}},
                 {{new Date(todo.deadline).toString().split(" ")[1]}}

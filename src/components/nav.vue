@@ -10,7 +10,7 @@
           <div class="flex justify-center md:inline">
             <fa-icon :icon="['fas', 'tasks']" size="1x" color="darkBlue"/>
           </div>
-          <div class="inline text-xs md:pl-2 md:font-semibold" v-show="expandNav">
+          <div class="inline  md:pl-2 md:font-semibold" v-show="expandNav">
             <span style="color:#00008B">Todos</span>
           </div>
         </button>
@@ -20,7 +20,7 @@
           <div class="flex justify-center md:inline">
             <fa-icon :icon="['fas', 'calendar-alt']" size="1x" color="darkBlue"/>
           </div>
-          <div class="inline text-xs md:pl-2 md:font-semibold" v-show="expandNav">
+          <div class="inline  md:pl-2 md:font-semibold" v-show="expandNav">
             <span style="color:#00008B">Calendar View</span>
           </div>
         </button>
@@ -30,7 +30,7 @@
           <div class="flex justify-center md:inline">
             <fa-icon :icon="['fas', 'plus']" size="1x" color="darkBlue"/>
           </div>
-          <div class="inline text-xs md:pl-2 md:font-semibold" v-show="expandNav">
+          <div class="inline  md:pl-2 md:font-semibold" v-show="expandNav">
             <span style="color:#00008B">New Task</span>
           </div>
         </button>
@@ -41,7 +41,7 @@
             <fa-icon class="md:hidden" :icon="['fas', 'ellipsis-h']" size="1x" color="darkBlue"/>
             <fa-icon class="hidden md:inline" :icon="['fas', 'ellipsis-v']" size="1x" color="darkBlue"/>
           </div>
-          <div class="inline text-xs md:pl-2 md:font-semibold" v-show="expandNav">
+          <div class="inline  md:pl-2 md:font-semibold" v-show="expandNav">
             <span style="color:#00008B">Settings</span>
           </div>
         </button>
