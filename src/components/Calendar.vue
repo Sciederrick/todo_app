@@ -1,7 +1,7 @@
 <template>
 <div class="w-full h-5/6 flex items-center justify-center font-sans">
   <!-- Calendar -->
-  <div class="w-full md:w-auto p-2 md:mx-20 antialised">
+  <div class="w-full md:w-auto p-2 md:mx-20 mt-5 antialised">
     <!-- Header -->
     <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white" :class="{ 'text-gray-700':!toggle }">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
@@ -32,7 +32,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 md:gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-12 md:w-20 lg:w-32 border-none md:border text-center font-bold py-2 bg-white md:rounded md:shadow"
+        class="w-12 md:w-20 lg:w-32 border-none md:border text-center font-bold py-2 bg-white rounded-sm md:rounded md:shadow"
         >
         {{day}}
       </div>
@@ -41,7 +41,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-5 md:gap-1 lg:gap-2">
       <div 
         v-for="i in getNoOfDays" :key="i"
-        class="h-20 w-12 md:w-20 lg:w-32 md:border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
+        class="h-20 w-12 mb-2 md:w-20 lg:w-32 md:border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
         >
         {{i}}
         <ul 
