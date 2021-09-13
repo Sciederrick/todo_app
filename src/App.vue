@@ -25,7 +25,9 @@
         </div>
       <!-- NB! focus-within must be enabled for boxShadow in variants -->
       </div>
-      <component :is="currentTabComponent" :toggle="toggle"></component>
+      <keep-alive>
+        <component :is="currentTabComponent" :toggle="toggle"></component>
+      </keep-alive>
     </div>
   </div>
 </template>
