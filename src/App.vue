@@ -60,16 +60,16 @@
 <script>
 import Navbar from '@/components/nav.vue'
 import Tasks from '@/components/Tasks.vue'
-import AddTask from '@/components/addTask.vue'
-import Calendar from '@/components/Calendar.vue'
-import Settings from '@/components/Settings.vue'
 export default {
   components: {
     'my-navbar':Navbar,
     'my-tasks':Tasks,
-    'add-task':AddTask,
-    'my-calendar':Calendar,
-    'my-settings':Settings,
+    /*
+    * Lazy loading for performance
+    */
+    'add-task': () => import(/* webpackChunkName: "addTask" */'@/components/addTask.vue'),
+    'my-calendar': () => import(/* webpackChunkName: "myCalendar" */'@/components/Calendar.vue'),
+    'my-settings': () => import(/* webpackChunkName: "appSettings" */'@/components/Settings.vue')
   },
   data(){
     return {
