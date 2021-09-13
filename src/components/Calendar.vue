@@ -32,7 +32,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 md:gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-12 md:w-20 lg:w-32 border-none md:border text-center font-bold py-2 bg-white rounded-sm md:rounded md:shadow"
+        class="w-full pl-1 md:w-20 lg:w-32 border-none md:border font-bold py-2"
         >
         {{day}}
       </div>
@@ -41,7 +41,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-5 md:gap-1 lg:gap-2">
       <div 
         v-for="i in getNoOfDays" :key="i"
-        class="h-20 w-12 mb-2 md:w-20 lg:w-32 md:border text-center font-semibold py-2 bg-white text-gray-700 rounded shadow overflow-hidden"
+        class="h-20 w-full pl-1 mb-2 md:w-20 lg:w-32 md:border font-semibold py-2 text-gray-700 overflow-hidden"
         >
         {{i}}
         <ul 
