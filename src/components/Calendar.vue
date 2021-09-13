@@ -32,7 +32,7 @@
     <div class="grid grid-flow-row grid-cols-7 grid-rows-1 md:gap-1 lg:gap-2 mb-2">
       <div 
         v-for="day in DAYS" :key="day"
-        class="w-full pl-1 md:w-20 lg:w-32 border-none md:border font-bold py-2"
+        class="w-full pl-1 md:w-20 lg:w-32 text-gray-700 underline font-bold py-2"
         >
         {{day}}
       </div>
