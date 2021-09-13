@@ -39,7 +39,7 @@
 							<input class="w-full mr-1 border-0 focus:outline-none" v-model="task.deadline" type="date" name="deadline" required>
 						</div>
 						<div class="flex justify-between w-full my-8 mx-2 border-b-2 border-gray-700 hover:border-green-800">
-							<select class="w-full ml-1" v-model="task.priority" required>
+							<select class="w-full ml-1 py-3" v-model="task.priority" required>
 								<option disabled value="">priority</option>
 								<option>Critical</option>
 								<option>Important</option>
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="flex justify-center items-center my-8 mx-2">
-						<select class="focus:outline-none" v-model="task.tag" required>
+						<select class="py-3 focus:outline-none" v-model="task.tag" required>
 							<option disabled value="">select tag</option>
 							<option v-for="(tag, index) in tags" :key="tag+index">{{tag}}</option>
 						</select>
