@@ -1,7 +1,7 @@
 <template>
 <div class="w-full h-5/6 flex items-center justify-center font-sans">
   <!-- Calendar -->
-  <div class="w-full md:w-auto p-2 md:mx-20 mt-5 antialised">
+  <div class="w-full md:w-auto p-2 md:mx-20 mx-2 mt-5 antialised">
     <!-- Header -->
     <div class="flex justify-between bg-transparent mb-1 font-bold text-lg lg:text-2xl antialised text-white" :class="{ 'text-gray-700':!toggle }">
       <span>{{year}}&nbsp;{{MONTH_NAMES[month]}}</span>
@@ -46,7 +46,7 @@
         {{i}}
         <ul 
           v-if="events"
-          class="text-xs font-mono text-gray-500 text-left underline pl-2">
+          class="text-xs font-mono text-gray-500 text-left underline md:pl-2">
             <li v-for="event in events" :key="event._id">
               <span 
                 v-if="event.deadline.split('-')[0] == year 
