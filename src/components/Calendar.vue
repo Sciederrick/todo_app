@@ -1,5 +1,5 @@
 <template>
-<div class="w-full h-5/6 flex items-center justify-center font-sans">
+<div class="w-full h-5/6 flex items-center justify-center">
   <!-- Calendar -->
   <div class="w-full md:w-auto p-2 md:mx-20 mx-2 mt-5 antialised">
     <!-- Header -->
@@ -46,7 +46,7 @@
         {{i}}
         <ul 
           v-if="events"
-          class="text-xs font-mono text-gray-500 text-left underline md:pl-2">
+          class="text-xs font-mono text-gray-500 text-left underline md:pl-1">
             <li v-for="event in events" :key="event._id">
               <span 
                 v-if="event.deadline.split('-')[0] == year 

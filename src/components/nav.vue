@@ -21,7 +21,7 @@
             <fa-icon :icon="['fas', 'calendar-alt']" size="1x" color="darkBlue"/>
           </div>
           <div class="inline  md:pl-2 md:font-semibold" v-show="expandNav">
-            <span style="color:#00008B">Calendar View</span>
+            <span style="color:#00008B">Calendar</span>
           </div>
         </button>
       </li>

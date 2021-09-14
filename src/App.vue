@@ -13,29 +13,26 @@
         <div class="float-right flex flex-col mx-2 md:mx-8 my-2">
             <label for="unchecked" class="mt-3 inline-flex items-center cursor-pointer">
                 <span class="relative">
-                <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner">
-                    <fa-icon class="ml-1" :icon="['fas', 'sun']" size="1x" color="yellow"/>
-                    <fa-icon class="float-right mt-1 mr-1 text-sm" :icon="['fas', 'moon']" size="1x" color="yellow"/>
-                </span>
-                <span class="absolute block w-4 h-4 mt-1 mx-1 bg-white rounded-full shadow inset-y-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out" :class="{'right-0':toggle, 'left-0':!toggle}">
-                    <input @click="toggle=!toggle" id="unchecked" type="checkbox" class="absolute opacity-0 w-0 h-0"/>
-                </span>
+                  <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner">
+                      <fa-icon class="ml-1 mt-1" :icon="['fas', 'sun']" size="1x" color="yellow"/>
+                      <fa-icon class="float-right mt-1 mr-1 text-sm" :icon="['fas', 'moon']" size="1x" color="yellow"/>
+                  </span>
+                  <span class="absolute block w-4 h-4 mt-1 mx-1 bg-white rounded-full shadow inset-y-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out" :class="{'right-0':toggle, 'left-0':!toggle}">
+                      <input @click="toggle=!toggle" id="unchecked" type="checkbox" class="absolute opacity-0 w-0 h-0"/>
+                  </span>
                 </span>
             </label>
         </div>
       <!-- NB! focus-within must be enabled for boxShadow in variants -->
       </div>
-      <keep-alive>
-        <component :is="currentTabComponent" :toggle="toggle"></component>
-      </keep-alive>
+      <component :is="currentTabComponent" :toggle="toggle"></component>
     </div>
   </div>
 </template>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;1,400&display=swap');
 #app {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Overpass', serif;
 }
 /* width */
 ::-webkit-scrollbar {
